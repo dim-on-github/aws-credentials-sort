@@ -3,8 +3,8 @@ import os
 import re
 import boto3
 
-NEW_CREDENTIALS = "/Users/IUADA0KI/Downloads/aws_credentials"
-CREDENTIALS_PATH = "/Users/IUADA0KI/.aws"
+NEW_CREDENTIALS = f"{os.environ['HOME']}/Downloads/aws_credentials"
+CREDENTIALS_PATH = f"{os.environ['HOME']}/.aws"
 
 
 def main():
@@ -35,6 +35,7 @@ def main():
         if not main_config.has_section(account):
             main_config.add_section(account)
         main_config.set(account, key, credentials[key])
+        main_config.set("default", key, credentials[key])
 
     with open(f"{CREDENTIALS_PATH}/credentials", "w") as configfile:
         main_config.write(configfile)
