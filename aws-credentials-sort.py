@@ -31,11 +31,11 @@ def main():
 
     print(account)
 
-    for key in ("aws_access_key_id", "aws_secret_access_key", "aws_session_token"):
-        if not main_config.has_section(account):
-            main_config.add_section(account)
-        main_config.set(account, key, credentials[key])
-        main_config.set("default", key, credentials[key])
+    for section in (account, "default"):
+         for key in ("aws_access_key_id", "aws_secret_access_key", "aws_session_token"):
+             if not main_config.has_section(section):
+                 main_config.add_section(section)
+             main_config.set(section, key, credentials[key])
 
     with open(f"{CREDENTIALS_PATH}/credentials", "w") as configfile:
         main_config.write(configfile)
@@ -44,6 +44,7 @@ def main():
 
 
 if __name__ == "__main__":
+    print(NEW_CREDENTIALS)
     if os.path.exists(NEW_CREDENTIALS):
         main()
 
