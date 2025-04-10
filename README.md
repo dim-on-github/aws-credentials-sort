@@ -1,4 +1,4 @@
-Документація до команд для налаштування та використання aws-credentials-sort
+Документація до команд для налаштування та використання aws-credentials-sort test
 
 1. Копіювання файлу конфігурації до LaunchAgents
     cp aws-credentials-sort.plist ~/Library/LaunchAgents/
